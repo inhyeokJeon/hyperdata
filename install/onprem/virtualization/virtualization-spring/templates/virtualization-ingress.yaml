@@ -1,4 +1,4 @@
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: hyperdata-virtualization-ingress
@@ -17,12 +17,18 @@ spec:
     - http:
         paths:
           - path: /hyperdata{{ .Values.version.major  }}/projects/(.*)
+            pathType: Prefix
             backend:
-              serviceName: hyperdata-virtualization-svc
-              servicePort: 8500
+              service: 
+                name: hyperdata-virtualization-svc
+                port:
+                  number: 8500
     - http:
         paths:
           - path: /hyperdata{{ .Values.version.major  }}/dataobjects/(.*)
+            pathType: Prefix
             backend:
-              serviceName: hyperdata-virtualization-svc
-              servicePort: 8500
+              service:
+                name:  hyperdata-virtualization-svc
+                port: 
+                  number: 8500

@@ -13,7 +13,7 @@ spec:
         app: hyperdata-virtualization-deploy
     spec:
       imagePullSecrets:
-        - name: docker-secret
+        - name: docker-secret-virtualization
       containers:
         - name: hyperdata-virtualization-spring-con
           image: {{ .Values.image }}
